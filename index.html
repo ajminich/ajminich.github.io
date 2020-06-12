@@ -1,20 +1,88 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <title>AJ's Dogefort</title>
-    <link rel="icon" type="image/png" href="img/favicon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  </head>
-  <body style="background-color:#3a3a3a; text-align:center;">
-    <div style="margin: 100px auto;">
-      <header>
-        <img src="img/doge.jpg" alt="Doge likes the codes">
-        <div style="font:13px/20px 'Helvetica Neue',Helvetica,Arial,sans-serif; color:#fff; text-align:left; padding:10px;">
-21:57:20 doge@ajminich: | <br>
---link-- <br>
-github       linkedin       resume 
-        </div>
-      </header>
+
+    <!-- Based on https://stackoverflow.com/a/23951515. -->
+    <style>
+        .blink_text {
+            animation: 1s blinker ease infinite;
+            -webkit-animation: 1s blinker ease infinite;
+            -moz-animation: 1s blinker ease infinite;
+
+            color: limegreen;
+        }
+
+        @-moz-keyframes blinker {
+            0% {
+                opacity: 1.0;
+            }
+            50% {
+                opacity: 0.0;
+            }
+            100% {
+                opacity: 1.0;
+            }
+        }
+
+        @-webkit-keyframes blinker {
+            0% {
+                opacity: 1.0;
+            }
+            50% {
+                opacity: 0.0;
+            }
+            100% {
+                opacity: 1.0;
+            }
+        }
+
+        @keyframes blinker {
+            0% {
+                opacity: 1.0;
+            }
+            50% {
+                opacity: 0.0;
+            }
+            100% {
+                opacity: 1.0;
+            }
+        }
+    </style>
+
+    <script>
+        function startTime() {
+            const today = new Date();
+            const h = checkTime(today.getHours());
+            const m = checkTime(today.getMinutes());
+            const s = checkTime(today.getSeconds());
+            document.getElementById('timestamp').innerHTML = h + ":" + m + ":" + s;
+            const t = setTimeout(startTime, 500);
+        }
+
+        // Adds zero in front of numbers < 10.
+        function checkTime(i) {
+            if (i < 10) {
+                i = "0" + i
+            }
+            return i;
+        }
+    </script>
+</head>
+<body style="background-color:black; text-align:center;" onload="startTime()">
+<div style="background-image:url('static/doge.jpg'); height:200px; margin: 100px auto; width:800px;">
+    <div style="color:limegreen; font-family:'Courier New', Courier, monospace; padding: 20px 40px 10px 475px; text-align:left;">
+        <b><span id="timestamp" style="color:white"></span> doge@ajminich:
+            <span class="blink_text">|</span>
+        </b><br>
+        <span style="color:#bb0">&nbsp; -- link --</span><br>
+        <a href="https://github.com/ajminich" style="color:cyan">github</a>
+        &nbsp;
+        <a href="https://www.linkedin.com/in/ajminich" style="color:cyan">linkedin</a>
+        &nbsp;
+        <a href="static/resume.pdf" style="color:cyan">resume</a>
     </div>
-  </body>
+</div>
+</body>
 </html>
